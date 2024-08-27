@@ -1,0 +1,14 @@
+services:
+    postgres_profcon:
+      image: postgres:15.3
+      container_name: postgres_profcon
+      environment:
+          - POSTGRES_DB=postgres
+          - POSTGRES_USER=admin
+          - POSTGRES_PASSWORD=admin
+          - TZ=America/Fortaleza
+      volumes:
+          - ./data/postgresql:/var/lib/postgresql/data
+          - ./docker/postgresql/entrypoint/init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
+      ports:
+          - 15432:5432
